@@ -25,6 +25,18 @@ public class GenData {
 		//reader4 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/test.json"));
 	}
 	
+	Map<String, Business> getBusinessMap() {
+		return businessMap;
+	}
+	
+	Map<String, Review> getReviewMap() {
+		return reviewMap;
+	}
+	
+	Map<String, User> getUserMap() {
+		return userMap;
+	}
+	
 	public void getBusiness() throws IOException{
 		while (true) {
 			String line = reader1.readLine();
