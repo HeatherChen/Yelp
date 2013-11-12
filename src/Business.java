@@ -3,8 +3,8 @@ import java.util.List;
 
 
 public class Business {
-    double stars;
-    double newstars;
+    final double stars;
+    double newstars; //change this instead of real stars
     int review_count;
     String id;
     List<String> categories;
