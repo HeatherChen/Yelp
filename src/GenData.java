@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.json.*;
 
-public class RuleCredibility {
+public class GenData {
 
 	BufferedReader reader1;
 	BufferedReader reader2;
@@ -18,7 +18,7 @@ public class RuleCredibility {
 	Map<String, Review> reviewMap = new HashMap<String, Review>();
 	Map<String, User> userMap = new HashMap<String, User>();
 	
-	public RuleCredibility() throws IOException{
+	public GenData() throws IOException{
 		reader1 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/yelp_academic_dataset_business.json"));
 		reader2 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/yelp_academic_dataset_user.json"));
 		reader3 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/yelp_academic_dataset_review.json"));
@@ -122,7 +122,7 @@ public class RuleCredibility {
 	}
 	
 	public static void main(String args[]) throws IOException {
-		RuleCredibility data = new RuleCredibility();
+		GenData data = new GenData();
 		//data.getBusiness();
 		data.getUser();
 		//data.getReview();
