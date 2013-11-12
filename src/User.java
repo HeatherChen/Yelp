@@ -3,7 +3,7 @@ import java.util.HashSet;
 
 
 public class User {
-    double credibility = 3.0;
+    double credibility = 3.0; //default
     String u_id;
     String name;
     int review_count;

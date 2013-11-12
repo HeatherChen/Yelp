@@ -13,7 +13,7 @@ public class GenData {
 	BufferedReader reader1;
 	BufferedReader reader2;
 	BufferedReader reader3;
-	BufferedReader reader4;
+	//BufferedReader reader4;
 	Map<String, Business> businessMap = new HashMap<String, Business>();
 	Map<String, Review> reviewMap = new HashMap<String, Review>();
 	Map<String, User> userMap = new HashMap<String, User>();
@@ -22,7 +22,7 @@ public class GenData {
 		reader1 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/yelp_academic_dataset_business.json"));
 		reader2 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/yelp_academic_dataset_user.json"));
 		reader3 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/yelp_academic_dataset_review.json"));
-		reader4 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/test.json"));
+		//reader4 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/test.json"));
 	}
 	
 	public void getBusiness() throws IOException{
@@ -53,7 +53,7 @@ public class GenData {
 	
 	public void getReview() throws IOException{
 		while (true) {
-			String line = reader4.readLine();
+			String line = reader3.readLine();
 			if (line==null) break;
 			try{
 				JSONObject review = new JSONObject(line);
@@ -63,18 +63,11 @@ public class GenData {
 				String text = review.getString("text");
 				String date = review.getString("date");
 				double stars = review.getDouble("stars");
-				//System.out.println(stars);
 				HashMap<String, Integer> votes = new HashMap<String, Integer>();
 				JSONObject vote = review.getJSONObject("votes");
-				/*JSONObject funny = vote.getJSONObject("funny");
-				JSONObject useful = vote.getJSONObject("useful");
-				JSONObject cool = vote.getJSONObject("cool");*/
 				votes.put("funny", vote.getInt("funny"));
-				//System.out.println(vote.getInt("funny"));
 				votes.put("useful", vote.getInt("useful"));
-				//System.out.println(vote.getInt("useful"));
 				votes.put("cool", vote.getInt("cool"));
-				//System.out.println(vote.getInt("cool"));
 				
 				Review r = new Review(r_id, b_id, u_id, text, date, stars, votes);
 				reviewMap.put(r_id, r);
@@ -97,7 +90,7 @@ public class GenData {
 	
 	public void getUser() throws IOException{
 		while(true){
-			String line = reader4.readLine();
+			String line = reader2.readLine();
 			if (line == null) break;
 			try {
 				JSONObject user = new JSONObject(line);
@@ -108,9 +101,7 @@ public class GenData {
 				HashMap<String, Integer> votes = new HashMap<String, Integer>();
 				JSONObject vote = user.getJSONObject("votes");
 				votes.put("funny", vote.getInt("funny"));
-				//System.out.println(vote.getInt("funny"));
 				votes.put("useful", vote.getInt("useful"));
-				//System.out.println(vote.getInt("useful"));
 				votes.put("cool", vote.getInt("cool"));
 				User u  = new User(u_id, u_name, u_reviewCount, u_avgStar, votes);
 				userMap.put(u_id, u);
@@ -123,9 +114,8 @@ public class GenData {
 	
 	public static void main(String args[]) throws IOException {
 		GenData data = new GenData();
-		//data.getBusiness();
+		data.getBusiness();
 		data.getUser();
-		//data.getReview();
-		//parse.getLanguage();
+		data.getReview();
 	}
 }
