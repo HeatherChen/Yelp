@@ -6,7 +6,8 @@ import java.util.List;
 
 
 public class User {
-    double credibility = 3.0; //default
+    double credibility = 0.5; //default
+    double ruleCredibility;
     String u_id;
     String name;
     int review_count;
@@ -64,6 +65,7 @@ public class User {
     	}
     	for(int i=0; i<features.size();i++){
     		sample.add(features.get(i)*scoregiven/maxPerFeature[i]);
+    		features.set(i, features.get(i)/maxPerFeature[i]); 
     	}
     	return sample;
     }

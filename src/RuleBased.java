@@ -15,6 +15,8 @@ public class RuleBased {
     BufferedWriter writer;
     BufferedWriter y;
     double[] maxPerFeature = new double[featuresize];
+    double[] weightsLeanrt = new double[]{1.25687047, 0.8287024, 0.21196656, 5.12348454, -6.8873236, -0.35090351,-0.35062001, 0.18453315};
+    // pasted from output of python
     
     public RuleBased(GenData gen) throws IOException{
     	this.data = gen;
@@ -47,12 +49,23 @@ public class RuleBased {
     	}
     	writer.close();
     	y.close();
+    	
+    	// add reading the weights learnt and then call calcCredibility
     }
     
     public void aggregate(List<Double> sample, double[] featureForWeight){
          for(int i=0; i<sample.size();i++){
         	 featureForWeight[i]+=sample.get(i);
+       
          }
+    }
+    
+    public void calcCredibility(double[] weightsLearnt){
+    	for(User u:data.userMap.values()){
+    		for(int i=0; i<featuresize; i++){
+    			u.ruleCredibility += weightsLearnt[i]*u.features.get(i);
+    		}    		
+    	}
     }
  
     public static void main(String args[]) throws IOException {
