@@ -44,6 +44,27 @@ public class GenData {
 				System.out.print(line + System.getProperty("line.separator"));
 			}
 		}
+		while(true){
+			String line = reader2.readLine();
+			if (line == null) break;
+			try {
+				JSONObject user = new JSONObject(line);
+				String u_id = user.getString("user_id");
+				String u_name = user.getString("name");
+				int u_reviewCount = user.getInt("review_count");
+				double u_avgStar = user.getDouble("average_stars");
+				HashMap<String, Integer> votes = new HashMap<String, Integer>();
+				JSONObject vote = user.getJSONObject("votes");
+				votes.put("funny", vote.getInt("funny"));
+				votes.put("useful", vote.getInt("useful"));
+				votes.put("cool", vote.getInt("cool"));
+				User u  = new User(u_id, u_name, u_reviewCount, u_avgStar, votes);
+				userMap.put(u_id, u);
+			}catch(JSONException e) {
+				e.printStackTrace();
+				System.out.print(line + System.getProperty("line.separator"));
+			}
+		}
 		while (true) {
 			String line = reader3.readLine();
 			if (line==null) break;
@@ -67,37 +88,19 @@ public class GenData {
 				//Update user and business
 				Business b = businessMap.get(b_id);
 				User u = userMap.get(u_id);
-				b.users.add(u);
-				 
-				u.businesses.add(b);
-				u.reviews.add(r);
+				if(b!=null && u!=null){
+					b.users.add(u); 
+					u.businesses.add(b);
+					u.reviews.add(r);
+				}
+				
 				
 			}catch(JSONException e) {
 				e.printStackTrace();
 				System.out.print(line + System.getProperty("line.separator"));
 			}	
 		}
-		while(true){
-			String line = reader2.readLine();
-			if (line == null) break;
-			try {
-				JSONObject user = new JSONObject(line);
-				String u_id = user.getString("user_id");
-				String u_name = user.getString("name");
-				int u_reviewCount = user.getInt("review_count");
-				double u_avgStar = user.getDouble("average_stars");
-				HashMap<String, Integer> votes = new HashMap<String, Integer>();
-				JSONObject vote = user.getJSONObject("votes");
-				votes.put("funny", vote.getInt("funny"));
-				votes.put("useful", vote.getInt("useful"));
-				votes.put("cool", vote.getInt("cool"));
-				User u  = new User(u_id, u_name, u_reviewCount, u_avgStar, votes);
-				userMap.put(u_id, u);
-			}catch(JSONException e) {
-				e.printStackTrace();
-				System.out.print(line + System.getProperty("line.separator"));
-			}
-		}
+		
 	}
 	
 	public static Map<String, Business> getBusinessMap() {

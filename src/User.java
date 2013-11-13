@@ -9,8 +9,8 @@ public class User {
     int review_count;
     double average_stars;
     HashMap<String, Integer> votes;
-    HashSet<Business> businesses;
-    HashSet<Review> reviews;
+    HashSet<Business> businesses = new HashSet<Business>();
+    HashSet<Review> reviews = new HashSet<Review>();
     
     public User(String u_id, String name, int review_count, double average_stars, HashMap<String, Integer> votes){
     	this.u_id = u_id;

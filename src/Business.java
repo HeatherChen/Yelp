@@ -8,7 +8,7 @@ public class Business {
     int review_count;
     String id;
     List<String> categories;
-    HashSet<User> users;
+    HashSet<User> users = new HashSet<User>();
     
     public Business(String id, List<String> categories, int review_count, double stars){
     	this.id = id;
