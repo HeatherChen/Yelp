@@ -207,5 +207,6 @@ public class GenData {
 		data.getBusiness();
 		data.getUser();
 		data.getReview();
+		
 	}
 }
