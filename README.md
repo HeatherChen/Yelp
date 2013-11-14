@@ -27,13 +27,13 @@ User features used for credibility:
  -0.35062001  0.18453315  0.15627555]
 
 Sections:
-Abstract
-Introduction
-Related Work
-Data
-Dataset Statistics
-User Credibility Score
-   - HITS-Based 
-   - Feature-Based
-Difficulty
-Future Work
+- Abstract
+- Introduction
+- Related Work
+- Data
+- Dataset Statistics
+- User Credibility Score
+   1 HITS-Based 
+   2 Feature-Based
+- Difficulty
+- Future Work
