@@ -116,6 +116,19 @@ public class HITS {
 				break;
 			}
 		}
+		
+		// normalize the user credibility
+		double maxRange = 5.0;
+		double maxCredit = 0.0;
+		for (User user : users){
+			if (user.credibility > maxCredit)
+				maxCredit = user.credibility;
+		}
+		double scale = maxRange/maxCredit;
+		for (User user : users){
+			user.credibility *= scale;
+		}
+		
 	}
 	
 	
