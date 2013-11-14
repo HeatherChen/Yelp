@@ -2,6 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-        <classpathentry kind="lib" path="java-json.jar"/>
+	<classpathentry kind="lib" path="java-json.jar"/>
+	<classpathentry kind="lib" path="/Users/aimee/jars/jfreechart-1.0.16/jfreechart-1.0.16-demo.jar"/>
+	<classpathentry kind="lib" path="/Users/aimee/jars/jcommon-1.0.21/jcommon-1.0.21.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
