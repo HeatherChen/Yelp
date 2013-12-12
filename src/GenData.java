@@ -17,6 +17,8 @@ public class GenData {
 	static Map<String, Business> businessMap = new HashMap<String, Business>();
 	static Map<String, Review> reviewMap = new HashMap<String, Review>();
 	static Map<String, User> userMap = new HashMap<String, User>();
+
+	
 	
 	public GenData() throws IOException{
 		reader1 = new BufferedReader(new FileReader("yelp_phoenix_academic_dataset/yelp_academic_dataset_business.json"));

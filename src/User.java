@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 
-public class User {
+public class User implements Comparable<User>{
     double credibility = 0.5; //default
     double ruleCredibility;
     String u_id;
@@ -69,4 +69,26 @@ public class User {
     	}
     	return sample;
     }
+    
+    @Override
+    public int compareTo(User another){
+    	return this.u_id.compareTo(another.u_id);
+    }
+    
+    @Override
+    public boolean equals(Object obj){
+    	if (obj == null)
+    		return false;
+    	if (obj == this)
+    		return true;
+    	if (!(obj instanceof User))
+    		return false;
+    	User user = (User)obj;
+    	return this.u_id.equals(user.u_id);
+    }
+    
+    @Override
+   public int hashCode(){
+    	return (u_id !=null ? u_id.hashCode() : 0);
+   }
 }
